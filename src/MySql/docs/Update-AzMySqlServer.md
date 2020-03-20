@@ -16,21 +16,20 @@ The request body can contain one to many of the properties present in the normal
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <SecureString>] [-ReplicationRole <String>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+ [-AdministratorLoginPassword <SecureString>] [-ReplicationRole <String>] [-Sku <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
  [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
- [-StorageProfileStorageAutogrow <StorageAutogrow>] [-StorageProfileStorageMb <Int32>] [-Tag <Hashtable>]
+ [-StorageProfileStorageAutogrow <StorageAutogrow>] [-StorageProfileStorageInMb <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <SecureString>]
- [-ReplicationRole <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
- [-StorageProfileBackupRetentionDay <Int32>] [-StorageProfileStorageAutogrow <StorageAutogrow>]
- [-StorageProfileStorageMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>]
+ [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
+ [-StorageProfileStorageAutogrow <StorageAutogrow>] [-StorageProfileStorageInMb <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,27 +38,23 @@ The request body can contain one to many of the properties present in the normal
 
 ## EXAMPLES
 
-### Example 1: Update MySql server by resource group and server name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test -SslEnforcement Disabled
+PS C:\> {{ Add code here }}
 
-Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test  eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
+{{ Add output here }}
 ```
 
-This cmdlet updates MySql server by resource group and server name.
+{{ Add description here }}
 
-### Example 2: Update MySql server by mysql identity.
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test | Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -StorageProfileStorageMb 10240
+PS C:\> {{ Add code here }}
 
-Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test  eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Enabled
+{{ Add output here }}
 ```
 
-These cmdlets update MySql server by mysql identity.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -193,6 +188,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Sku
+The name of the sku, typically, tier + family + cores, e.g.
+B_Gen4_1, GP_Gen5_8.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SkuCapacity
 The scale up/out capacity, representing server's compute units.
 
@@ -211,23 +223,6 @@ Dynamic: False
 
 ### -SkuFamily
 The family of hardware.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuName
-The name of the sku, typically, tier + family + cores, e.g.
-B_Gen4_1, GP_Gen5_8.
 
 ```yaml
 Type: System.String
@@ -324,7 +319,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageProfileStorageMb
+### -StorageProfileStorageInMb
 Max storage allowed for a server.
 
 ```yaml
